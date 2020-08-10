@@ -1,0 +1,12 @@
+---
+language: python
+python:
+  - "3.6"
+
+# command to install dependencies
+install:
+  - pip install -r haproxy/tests/test-requirements.txt
+# command to run tests
+script:
+  - ansible-lint haproxy/tests/test.yml -x 303,701,601,206,602,403,301,502,306 -v
+  - ansible-playbook -i haproxy/tests/inventory haproxy/tests/test.yml --syntax-check

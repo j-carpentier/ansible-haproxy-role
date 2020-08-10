@@ -1,6 +1,5 @@
 ---
 # tasks file to install/setup haproxy on CentOS
-
 - name: Install haproxy on CentOS
   yum:
     name: haproxy

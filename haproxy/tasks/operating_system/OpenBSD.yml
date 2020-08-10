@@ -1,4 +1,5 @@
 ---
 # tasks file to install haproxy on OpenBSD
-- fail:
+- name: Failing unsupported Operating system
+  fail:
     msg: Haproxy role not currently supported for {{ ansible_distribution }}

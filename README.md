@@ -63,7 +63,7 @@ Manual testing (Vagrant)
 ------------------------
 
 - Create vagrant CentOS 7 virtual machines using Vagrantfile (1 haproxy and 2 nginx)  
-<em>bento/centos-7 box username/password is "vagrant"</em>
+<em>bento box default username/password is "vagrant"</em> (https://app.vagrantup.com/bento)
 ```
 vagrant up
 ```

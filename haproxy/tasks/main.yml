@@ -4,7 +4,7 @@
   include_vars: '{{ loop_vars }}'
   with_first_found:
     - files:
-        - '{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml'
+        - '{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml'
         - '{{ ansible_distribution }}.yml'
         - '{{ ansible_os_family }}.yml'
         - 'defaults.yml'
@@ -19,7 +19,7 @@
   include_tasks: '{{ loop_operating_system }}'
   with_first_found:
     - files:
-        - '{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml'
+        - '{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml'
         - '{{ ansible_distribution }}.yml'
         - '{{ ansible_os_family }}.yml'
         - 'defaults.yml'

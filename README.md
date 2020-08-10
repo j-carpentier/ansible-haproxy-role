@@ -3,7 +3,7 @@
 ansible-haproxy-role
 =========
 
-Haproxy single loadbalancer server ansible role for Centos 7
+HAProxy single loadbalancer server ansible role for Centos 7
 
 Requirements
 ------------
@@ -75,7 +75,7 @@ ansible-galaxy install geerlingguy.nginx
 ansible-playbook -i inventory playbook/deploy-nginx.yml -u vagrant -kK
 ```
 
-- Deploy haproxy server  
+- Deploy HAProxy server
 ```
 ansible-playbook -i inventory playbook/deploy-haproxy.yml -u vagrant -kK
 ```

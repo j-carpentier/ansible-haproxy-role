@@ -1,7 +1,9 @@
-# ansible-haproxy-role
+[![CI](https://travis-ci.org/j-carpentier/ansible-haproxy-role.svg?branch=master)](https://travis-ci.org/github/j-carpentier/ansible-haproxy-role)
+
+ansible-haproxy-role
 =========
 
-Haproxy single loadbalancer server role for Centos 7
+Haproxy single loadbalancer server ansible role for Centos 7
 
 Requirements
 ------------
@@ -92,4 +94,3 @@ License
 -------
 
 Julien Carpentier
-

@@ -1,0 +1,67 @@
+#---------------------------------------------------------------------
+# Global settings
+#---------------------------------------------------------------------
+global
+    log         127.0.0.1 {{ haproxy_syslog_facility }}
+    chroot      /var/lib/haproxy
+    pidfile     /var/run/haproxy.pid
+    maxconn     4000
+    user        haproxy
+    group       haproxy
+    daemon
+
+    # turn on stats unix socket
+    stats socket /var/lib/haproxy/stats
+
+#---------------------------------------------------------------------
+# common defaults that all the 'listen' and 'backend' sections will
+# use if not designated in their block
+#---------------------------------------------------------------------
+defaults
+    mode                    {{ haproxy_mode }}
+    log                     global
+    option                  httplog
+    option                  dontlognull
+    option http-server-close
+    option forwardfor       except 127.0.0.0/8
+    option                  redispatch
+    retries                 3
+    timeout http-request    10s
+    timeout queue           1m
+    timeout connect         10s
+    timeout client          1m
+    timeout server          1m
+    timeout http-keep-alive 10s
+    timeout check           10s
+    maxconn                 3000
+
+# Haproxy statistics
+listen  stats *:{{ haproxy_stats_port }}
+        mode                http
+        maxconn             10
+        timeout client      300s
+        timeout server      300s
+        timeout connect     300s
+        timeout queue       300s
+        stats enable
+        stats refresh 10s
+        stats show-node
+        stats auth {{ haproxy_stats_user }}:{{ haproxy_stats_password }}
+        stats uri /haproxy
+
+#---------------------------------------------------------------------
+# main frontend which proxys to the backends
+#---------------------------------------------------------------------
+frontend  main *:{{ haproxy_listenport }}
+    default_backend             {{ haproxy_default_backend }}
+
+#---------------------------------------------------------------------
+# round robin balancing between the various backends
+#---------------------------------------------------------------------
+{% for backend in haproxy.backends %}
+backend {{backend.name}}
+  balance {{backend.balance}}
+  {%for server in backend.servers %}
+    server {{server.name}} {{server.address}}:{{ server.port }} check
+  {% endfor %}
+{% endfor %}

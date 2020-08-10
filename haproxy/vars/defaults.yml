@@ -1,0 +1,23 @@
+---
+# default vars file for haproxy
+
+# Rsyslog log facility for HAproxy
+haproxy_syslog_facility: local2
+
+# HAProxy supports http/tcp"
+haproxy_mode: http
+
+# HAProxy stats port
+haproxy_stats_port: 3000
+
+# HAProxy stats auth username
+haproxy_stats_user: admin
+
+# HAProxy stats auth password
+haproxy_stats_password: r00tme
+
+# Port on which HAProxy should listen
+haproxy_listenport: 8080
+
+# HAProxy default backend
+haproxy_default_backend: production

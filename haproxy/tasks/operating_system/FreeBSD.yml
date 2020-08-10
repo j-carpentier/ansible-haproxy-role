@@ -1,0 +1,4 @@
+---
+# tasks file to install haproxy on FreeBSD
+- fail:
+    msg: Haproxy role not currently supported for {{ ansible_distribution }}

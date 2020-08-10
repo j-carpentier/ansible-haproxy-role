@@ -9,7 +9,7 @@ Requirements
 ------------
 
 This role was developed and tested using Ansible 2.9  
-Backward compatibility is currently not tested
+Backward compatibility is currently not tested and guaranteed
 
 Default variables values
 ------------------------
@@ -69,7 +69,7 @@ vagrant up
 ```
 
 - Deploy nginx webservers  
-<em>Deploy This example playbook require geerlingguy.nginx role</em>  
+<em>Provided example playbook require geerlingguy.nginx role available with ansible-galaxy</em>  
 ```
 ansible-galaxy install geerlingguy.nginx
 ansible-playbook -i inventory playbook/deploy-nginx.yml -u vagrant -kK
